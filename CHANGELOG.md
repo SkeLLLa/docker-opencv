@@ -1,3 +1,9 @@
+#### 3.4.1 (2018-04-06)
+
+##### Build System / Dependencies
+
+* **hooks:**  add more hooks to fix docker bugs ([2a18143f](https://github.com/SkeLLLa/docker-opencv/commit/2a18143fc1de649606937c5d877ff71ef5144627))
+
 #### 3.4.0 (2018-04-05)
 
 ##### Build System / Dependencies
