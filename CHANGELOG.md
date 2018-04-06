@@ -1,3 +1,13 @@
+#### 3.4.1 (2018-04-06)
+
+##### Build System / Dependencies
+
+* **docker:**  move dockerfiles ([a13ced16](https://github.com/SkeLLLa/docker-opencv/commit/a13ced167dd187354407fc47c1187e40b8075e80))
+
+##### Documentation Changes
+
+* **readme:**  update docs ([b405240a](https://github.com/SkeLLLa/docker-opencv/commit/b405240a1de28d7ec862345b70ab099aafff8a70))
+
 #### 3.4.0 (2018-04-05)
 
 ##### Build System / Dependencies
