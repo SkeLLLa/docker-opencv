@@ -3,6 +3,7 @@ FROM debian:stretch
 ARG RUNTIME_DEPS='ca-certificates libpng-dev libjpeg-dev libwebp-dev libtiff5-dev libopenexr-dev libopenblas-dev libx11-dev'
 ARG BUILD_DEPS='wget unzip cmake build-essential python pkg-config'
 ARG LIB_PREFIX='/usr/local'
+ARG OPENCV_VERSION
 
 ENV OPENCV_VERSION=${OPENCV_VERSION} \
     LIB_PREFIX=${LIB_PREFIX} 
