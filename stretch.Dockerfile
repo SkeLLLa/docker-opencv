@@ -2,13 +2,13 @@ FROM debian:stretch
 
 ARG RUNTIME_DEPS='ca-certificates libpng-dev libjpeg-dev libwebp-dev libtiff5-dev libopenexr-dev libopenblas-dev libx11-dev'
 ARG BUILD_DEPS='wget unzip cmake build-essential python pkg-config'
-ARG OPENCV_VERSION=3.4.1
 ARG LIB_PREFIX='/usr/local'
 
 ENV OPENCV_VERSION=${OPENCV_VERSION} \
     LIB_PREFIX=${LIB_PREFIX} 
 
-RUN apt-get update && apt-get install -y ${BUILD_DEPS} ${RUNTIME_DEPS} --no-install-recommends \
+RUN echo "OpenCV: ${OPENCV_VERSION}" \
+    && apt-get update && apt-get install -y ${BUILD_DEPS} ${RUNTIME_DEPS} --no-install-recommends \
     && wget https://github.com/Itseez/opencv/archive/${OPENCV_VERSION}.zip -O opencv.zip \
     && wget https://github.com/Itseez/opencv_contrib/archive/${OPENCV_VERSION}.zip -O opencv_contrib.zip \
     && mkdir /opencv \
@@ -66,4 +66,4 @@ RUN apt-get update && apt-get install -y ${BUILD_DEPS} ${RUNTIME_DEPS} --no-inst
     && apt-get purge -y --auto-remove $BUILD_DEPS \
     && apt-get autoremove -y --purge \
     && apt-get install -y $RUNTIME_DEPS --no-install-recommends \
-&& rm -rf /var/lib/apt/lists/* /usr/share/man /usr/local/share/man /tmp/*
+    && rm -rf /var/lib/apt/lists/* /usr/share/man /usr/local/share/man /tmp/*

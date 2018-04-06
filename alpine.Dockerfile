@@ -2,7 +2,6 @@ FROM alpine:latest
 
 ARG RUNTIME_DEPS='libpng libjpeg-turbo libwebp tiff openexr jasper openblas libx11 zlib'
 ARG BUILD_DEPS='xz wget unzip cmake build-base python linux-headers libpng-dev libjpeg-turbo-dev libwebp-dev tiff-dev openexr-dev jasper-dev openblas-dev libx11-dev zlib-dev'
-ARG OPENCV_VERSION=3.4.1
 ARG LIB_PREFIX='/usr/local'
 
 ENV OPENCV_VERSION=${OPENCV_VERSION} \
