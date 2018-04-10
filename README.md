@@ -2,6 +2,10 @@
 
 Docker image with compiled OpenCV library
 
+[![](https://images.microbadger.com/badges/version/m03geek/opencv:alpine.svg)](https://microbadger.com/images/m03geek/opencv:alpine "version")[![](https://images.microbadger.com/badges/image/m03geek/opencv:alpine.svg)](https://microbadger.com/images/m03geek/opencv:alpine "layers")
+
+[![](https://images.microbadger.com/badges/version/m03geek/opencv:stretch.svg)](https://microbadger.com/images/m03geek/opencv:stretch "version")[![](https://images.microbadger.com/badges/image/m03geek/opencv:stretch.svg)](https://microbadger.com/images/m03geek/opencv:stretch "layers")
+
 # OpenCV
 
 OpenCV is built from source with contrib libraries. Latest git tag corresponds OpenCV version.
