@@ -1,17 +1,17 @@
-FROM debian:stretch
+FROM alpine:latest
 
-ARG RUNTIME_DEPS='ca-certificates libpng-dev libjpeg-dev libwebp-dev libtiff5-dev libopenexr-dev libopenblas-dev libx11-dev'
-ARG BUILD_DEPS='apt-utils wget unzip cmake build-essential pkg-config'
+ARG RUNTIME_DEPS='libpng libjpeg-turbo libwebp tiff openexr jasper openblas libx11 zlib'
+ARG BUILD_DEPS='wget unzip cmake build-base python linux-headers libpng-dev libjpeg-turbo-dev libwebp-dev tiff-dev openexr-dev jasper-dev openblas-dev libx11-dev zlib-dev'
 ARG LIB_PREFIX='/usr/local'
-ARG OPENCV_VERSION
+ARG VERSION
 
-ENV OPENCV_VERSION=${OPENCV_VERSION} \
-    LIB_PREFIX=${LIB_PREFIX} 
+ENV OPENCV_VERSION=${VERSION} \
+    LIB_PREFIX=${LIB_PREFIX}
 
 RUN echo "OpenCV: ${OPENCV_VERSION}" \
-    && apt-get update && apt-get install -y ${BUILD_DEPS} ${RUNTIME_DEPS} --no-install-recommends \
-    && wget https://github.com/Itseez/opencv/archive/${OPENCV_VERSION}.zip -O opencv.zip \
-    && wget https://github.com/Itseez/opencv_contrib/archive/${OPENCV_VERSION}.zip -O opencv_contrib.zip \
+    && apk add -u --no-cache --virtual .build-dependencies $BUILD_DEPS \
+    && wget -q https://github.com/Itseez/opencv/archive/${OPENCV_VERSION}.zip -O opencv.zip \
+    && wget -q https://github.com/Itseez/opencv_contrib/archive/${OPENCV_VERSION}.zip -O opencv_contrib.zip \
     && mkdir /opencv \
     && mv opencv.zip opencv_contrib.zip /opencv \
     && cd /opencv \
@@ -64,7 +64,6 @@ RUN echo "OpenCV: ${OPENCV_VERSION}" \
     && make install \
     && cd / \
     && rm -rf /opencv \
-    && apt-get purge -y --auto-remove $BUILD_DEPS \
-    && apt-get autoremove -y --purge \
-    && apt-get install -y $RUNTIME_DEPS --no-install-recommends \
-    && rm -rf /var/lib/apt/lists/* /usr/share/man /usr/local/share/man /tmp/*
+    && apk del .build-dependencies \
+    && apk add -u --no-cache $RUNTIME_DEPS \
+    && rm -rf /var/cache/apk/* /usr/share/man /usr/local/share/man /tmp/*
