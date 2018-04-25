@@ -9,6 +9,7 @@ ENV OPENCV_VERSION=${VERSION} \
     LIB_PREFIX=${LIB_PREFIX}
 
 RUN echo "OpenCV: ${OPENCV_VERSION}" \
+    && rm -rf /usr/local/lib && ln -s /usr/local/lib64 /usr/local/lib \
     && apk add -u --no-cache --virtual .build-dependencies $BUILD_DEPS \
     && wget -q https://github.com/Itseez/opencv/archive/${OPENCV_VERSION}.zip -O opencv.zip \
     && wget -q https://github.com/Itseez/opencv_contrib/archive/${OPENCV_VERSION}.zip -O opencv_contrib.zip \
@@ -64,6 +65,7 @@ RUN echo "OpenCV: ${OPENCV_VERSION}" \
     && make install \
     && cd / \
     && rm -rf /opencv \
+    && /usr/glibc-compat/sbin/ldconfig \
     && apk del .build-dependencies \
     && apk add -u --no-cache $RUNTIME_DEPS \
     && rm -rf /var/cache/apk/* /usr/share/man /usr/local/share/man /tmp/*
