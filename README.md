@@ -6,6 +6,10 @@ Docker image with compiled OpenCV library
 
 [![](https://images.microbadger.com/badges/version/m03geek/opencv:stretch.svg)](https://microbadger.com/images/m03geek/opencv:stretch "version")[![](https://images.microbadger.com/badges/image/m03geek/opencv:stretch.svg)](https://microbadger.com/images/m03geek/opencv:stretch "layers")
 
+# Versions (latest)
+
+* opencv - 3.4.1
+
 # OpenCV
 
 OpenCV is built from source with contrib libraries. Latest git tag corresponds OpenCV version.
